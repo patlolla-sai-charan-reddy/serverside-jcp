@@ -42,32 +42,3 @@ app.use(function (err, req, res, next) {
 });
 
 module.exports = app;
-
-
-// import React from 'react';
-
-// const CustomInputField = ({ inputComponent: InputComponent, error, success, characterCount, errorText }) => {
-//   const getInputStyles = () => {
-//     let styles = 'custom-input-field';
-//     if (error) {
-//       styles += ' error';
-//     } else if (success) {
-//       styles += ' success';
-//     }
-//     return styles;
-//   };
-
-//   const DefaultInputComponent = () => <input type="text" />;
-
-//   const RenderedInputComponent = InputComponent || DefaultInputComponent;
-
-//   return (
-//     <div className={getInputStyles()}>
-//       <RenderedInputComponent />
-//       {characterCount && <span>{characterCount}</span>}
-//       {error && <span className="error-text">{errorText}</span>}
-//     </div>
-//   );
-// };
-
-// export default CustomInputField;
