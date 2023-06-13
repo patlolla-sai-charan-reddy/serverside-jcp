@@ -24,6 +24,39 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/react', reactRouter);
+import { useState, useEffect } from 'react';
+
+const MyComponent = ({ persistComponentName, defaultTabIndex }) => {
+  const [activeTab, setActiveTab] = useState(() => {
+    const persistedState = getPersistenceState(persistComponentName);
+    return persistedState !== null ? persistedState : defaultTabIndex;
+  });
+
+  useEffect(() => {
+    if (persistComponentName) {
+      setPersistenceState(persistComponentName, activeTab);
+    }
+  }, [activeTab, persistComponentName]);
+
+  const handleChange = (selectedTab) => {
+    setActiveTab(selectedTab);
+  };
+
+  const resetActiveTab = () => {
+    setActiveTab(defaultTabIndex);
+  };
+
+  useEffect(() => {
+    const clickedTab = document.getElementById(`${persistComponentName}-${activeTab}`);
+    if (clickedTab) {
+      clickedTab.blur();
+    }
+  }, [activeTab, persistComponentName]);
+
+  return { activeTab, handleChange, resetActiveTab };
+};
+
+export default MyComponent;
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
