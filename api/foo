@@ -1,0 +1,41 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+
+const CustomInputField = ({ inputComponent: InputComponent, error, success, characterCount, errorText }) => {
+  const getInputStyles = () => {
+    let styles = 'custom-input-field';
+    if (error) {
+      styles += ' error';
+    } else if (success) {
+      styles += ' success';
+    }
+    return styles;
+  };
+
+  const DefaultInputComponent = () => <input type="text" />;
+
+  const RenderedInputComponent = InputComponent || DefaultInputComponent;
+
+  return (
+    <div className={getInputStyles()}>
+      <RenderedInputComponent />
+      {characterCount && <span>{characterCount}</span>}
+      {error && <span className="error-text">{errorText}</span>}
+    </div>
+  );
+};
+
+CustomInputField.propTypes = {
+  inputComponent: PropTypes.elementType,
+  error: PropTypes.bool,
+  success: PropTypes.bool,
+  characterCount: PropTypes.string,
+  errorText: PropTypes.string,
+};
+
+CustomInputField.defaultProps = {
+  error: false,
+  success: false,
+};
+
+export default CustomInputField;
