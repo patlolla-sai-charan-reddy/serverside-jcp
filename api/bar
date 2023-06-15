@@ -94,4 +94,19 @@ DefaultInputComponent.propTypes = {
   maxLength: PropTypes.number,
 };
 
+DefaultInputComponent.defaultProps = {
+  value: '',
+  onChange: () => null,
+  onFocus: () => null,
+  onBlur: () => null,
+  onKeyDown: () => null,
+  onKeyUp: () => null,
+  onKeyPress: () => null,
+  error: false,
+  warning: false,
+  success: false,
+  placeholder: '',
+  maxLength: Infinity,
+};
+
 export default DefaultInputComponent;
