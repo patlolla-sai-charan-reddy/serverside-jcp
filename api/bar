@@ -110,3 +110,43 @@ DefaultInputComponent.defaultProps = {
 };
 
 export default DefaultInputComponent;
+
+
+.default-input-component {
+  position: relative;
+  
+  label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+    
+    &:focus {
+      outline: none;
+      border-color: blue;
+    }
+  }
+  
+  &.focused input {
+    border-color: blue;
+  }
+  
+  &.error input {
+    border-color: red;
+  }
+  
+  &.warning input {
+    border-color: orange;
+  }
+  
+  &.success input {
+    border-color: green;
+  }
+}
